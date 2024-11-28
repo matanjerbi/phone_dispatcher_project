@@ -10,6 +10,7 @@ class PhoneRepository:
         devices = data["devices"]
         interaction = data["interaction"]
 
+
         with self.driver.session() as session:
             for device in devices:
                 session.run("""
