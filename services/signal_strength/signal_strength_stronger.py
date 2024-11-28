@@ -7,11 +7,11 @@ neo4j_driver = GraphDatabase.driver(
     auth=("neo4j", "12345678")
 )
 
-phone_blueprint = blueprints.Blueprint('phone_blueprint', __name__)
+signal_strength_blueprint = blueprints.Blueprint('signal_strength_blueprint', __name__)
 
 
 
-@phone_blueprint.route("/api/signal-strength", methods=['GET'])
+@signal_strength_blueprint.route("/api/signal-strength", methods=['GET'])
 def get_interaction():
     repo = StrengthRepository(neo4j_driver)
     data = repo.find_all_signal_strength_stronger(neo4j_driver)
