@@ -44,11 +44,3 @@ class PhoneRepository:
 
         return {"status": "success", "message": "Data added to Neo4j"}
 
-    def find_bluetooth(self):
-        with self.driver.session() as session:
-            result = session.run("""
-                MATCH (r:Device)
-                RETURN d.id, d.name, d.brand, d.model, d.os, d.bluetooth_version
-            """)
-            return [{"id": record["d.id"], "name": record["d.name"], "brand": record["d.brand"], "model": record["d.model"],
-                     "os": record["d.os"], "bluetooth_version": record["d.bluetooth_version"]} for record in result]
